@@ -44,47 +44,51 @@ const Profile = () => {
     navigate('/update-profile');
   };
 
-  if (loading) return <div className="profile-container">Loading profile...</div>;
-  if (error) return <div className="profile-container">{error}</div>;
+  if (loading) return <div className="loading">Loading profile...</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <div className="profile-left">
-          <img
-            src={userData.profilePictureUrl || 'https://via.placeholder.com/150'}
-            alt="Profile"
-            className="profile-image"
-          />
-          <button className="edit-button" onClick={handleEditProfile}>
-            Edit Profile
-          </button>
-        </div>
-        <div className="profile-right">
-          <h2 className="profile-name">
-            {userData.firstName} {userData.lastName}
-          </h2>
-          <p className="profile-username">@{userData.email.split('@')[0]}</p>
-          <div className="profile-info">
-            <div className="profile-item">
-              <span className="profile-icon">📧</span>
-              <span className="profile-label">Email:</span>
-              <span className="profile-value">{userData.email}</span>
-            </div>
-            <div className="profile-item">
-              <span className="profile-icon">👤</span>
-              <span className="profile-label">Full Name:</span>
-              <span className="profile-value">
-                {userData.firstName} {userData.lastName}
-              </span>
-            </div>
+    <main className="profile-page">
+      <header className="profile-header">
+        <h1>Welcome, {userData.firstName}</h1>
+        <p>{new Date().toLocaleDateString()}</p>
+      </header>
+      <section className="profile-details">
+        <img
+          src={userData.profilePictureUrl || 'https://via.placeholder.com/150'}
+          alt="Profile"
+          className="profile-avatar"
+        />
+        <h2>{userData.firstName} {userData.lastName}</h2>
+        <p>{userData.email}</p>
+      </section>
+      <section className="profile-form">
+        <div className="form-row">
+          <div className="form-group">
+            <label>First Name</label>
+            <input type="text" value={userData.firstName} readOnly />
           </div>
-          <button className="logout-button logout" onClick={handleLogout}>
-            Logout
-          </button>
+          <div className="form-group">
+            <label>Last Name</label>
+            <input type="text" value={userData.lastName} readOnly />
+          </div>
         </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" value={userData.email} readOnly />
+          </div>
+        </div>
+      </section>
+      <div className="button-row">
+        <button className="edit-button" onClick={handleEditProfile}>
+          Edit Profile
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
-    </div>
+    </main>
   );
 };
 
