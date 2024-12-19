@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+import "./styles.css";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
@@ -60,43 +61,39 @@ const ResetPassword = () => {
     <div className="container">
       <h2>Reset Password</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Confirmation Code:</label>
-          <input
-            type="text"
-            value={code}
-            onChange={(e) => setCode(e.target.value)} 
-            required
-          />
-        </div>
-        <div>
-          <label>New Password:</label>
-          <input
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Confirmation Code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          className="input-field"
+          required
+        />
+        <input
+          type="password"
+          placeholder="New Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          className="input-field"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          className="input-field"
+          required
+        />
         <button type="submit" className="primary-button">
           Reset Password
         </button>
       </form>
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {message && <p className="success-message">{message}</p>}
+      {error && <p className="error-message">{error}</p>}
       <button
         className="back-button"
         onClick={() => navigate("/login")}
-        style={{ marginTop: "10px" }}
       >
         Back
       </button>

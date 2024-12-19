@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./styles.css"; 
 
 const RequestPasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -46,9 +47,9 @@ const RequestPasswordReset = () => {
         />
         <button type="submit" className="primary-button">Send Request</button>
       </form>
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={() => navigate("/login")} className="back-button" style={{ marginTop: "10px" }}>
+      {message && <p className="success-message">{message}</p>}
+      {error && <p className="error-message">{error}</p>}
+      <button onClick={() => navigate("/login")} className="back-button">
         Back
       </button>
     </div>

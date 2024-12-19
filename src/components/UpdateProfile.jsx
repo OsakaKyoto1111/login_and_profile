@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './styles.css'; 
 
 const UpdateProfile = () => {
   const [firstName, setFirstName] = useState('');
@@ -96,8 +97,8 @@ const UpdateProfile = () => {
         />
         <button type="submit" className="primary-button">Save Changes</button>
       </form>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {message && <p className="success-message">{message}</p>}
+      {error && <p className="error-message">{error}</p>}
       <button className="back-button" onClick={() => navigate('/profile')}>
         Back
       </button>
