@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './styles.css';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -44,51 +43,69 @@ const Profile = () => {
     navigate('/update-profile');
   };
 
-  if (loading) return <div className="loading">Loading profile...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return <div className="text-center mt-10 text-xl">Loading profile...</div>;
+  if (error) return <div className="text-center text-red-500 text-xl">{error}</div>;
 
   return (
-    <main className="profile-page">
-      <header className="profile-header">
-        <h1>Welcome, {userData.firstName}</h1>
-        <p>{new Date().toLocaleDateString()}</p>
-      </header>
-      <section className="profile-details">
-        <img
-          src={userData.profilePictureUrl || 'https://via.placeholder.com/150'}
-          alt="Profile"
-          className="profile-avatar"
-        />
-        <h2>{userData.firstName} {userData.lastName}</h2>
-        <p>{userData.email}</p>
-      </section>
-      <section className="profile-form">
-        <div className="form-row">
-          <div className="form-group">
-            <label>First Name</label>
-            <input type="text" value={userData.firstName} className="custom-input" readOnly />
+    <div className="text-gray-800 bg-gray-100 min-h-screen flex flex-col items-center pt-8">
+      <h1 className="text-4xl font-bold mb-5">Welcome, {userData.firstName}</h1>
+      <p className="text-lg text-gray-600 mb-6">{new Date().toLocaleDateString()}</p>
+
+      <img
+        src={userData.profilePictureUrl || 'https://via.placeholder.com/150'}
+        alt="Profile"
+        className="w-36 h-36 rounded-full border-4 border-gray-200 shadow-lg object-cover mb-5"
+      />
+      <h2 className="text-2xl font-semibold mb-2">{userData.firstName} {userData.lastName}</h2>
+      <p className="text-lg text-gray-500 mb-6">{userData.email}</p>
+
+      <div className="space-y-5 w-full max-w-lg px-6">
+        <div className="grid grid-cols-2 gap-6">
+          <div>
+            <label className="block text-base text-gray-600 mb-1">First Name</label>
+            <input
+              type="text"
+              value={userData.firstName}
+              readOnly
+              className="w-full p-3 text-base border rounded-md bg-gray-50"
+            />
           </div>
-          <div className="form-group">
-            <label>Last Name</label>
-            <input type="text" value={userData.lastName} className="custom-input" readOnly />
+          <div>
+            <label className="block text-base text-gray-600 mb-1">Last Name</label>
+            <input
+              type="text"
+              value={userData.lastName}
+              readOnly
+              className="w-full p-3 text-base border rounded-md bg-gray-50"
+            />
           </div>
         </div>
-        <div className="form-row">
-          <div className="form-group">
-            <label>Email</label>
-            <input type="email" value={userData.email} className="custom-input" readOnly />
-          </div>
+        <div>
+          <label className="block text-base text-gray-600 mb-1">Email</label>
+          <input
+            type="email"
+            value={userData.email}
+            readOnly
+            className="w-full p-3 text-base border rounded-md bg-gray-50"
+          />
         </div>
-      </section>
-      <div className="button-row">
-        <button className="custom-button" onClick={handleEditProfile}>
+      </div>
+
+      <div className="flex gap-6 mt-8">
+        <button
+          onClick={handleEditProfile}
+          className="px-6 py-3 text-lg bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
           Edit Profile
         </button>
-        <button className="custom-button logout-button" onClick={handleLogout}>
+        <button
+          onClick={handleLogout}
+          className="px-6 py-3 text-lg bg-red-600 text-white rounded-md hover:bg-red-700"
+        >
           Logout
         </button>
       </div>
-    </main>
+    </div>
   );
 };
 
