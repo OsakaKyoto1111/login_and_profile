@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./styles.css"; 
+import "./styles.css";
 
 const RequestPasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,8 @@ const RequestPasswordReset = () => {
       });
 
       if (response.status === 200) {
-        navigate(`/reset-password?email=${encodeURIComponent(email)}`);
+        setMessage("Password reset link has been sent to your email.");
+        setTimeout(() => navigate(`/reset-password?email=${encodeURIComponent(email)}`), 1500);
       }
     } catch (err) {
       const errorMsg =
@@ -41,15 +42,16 @@ const RequestPasswordReset = () => {
         <input
           type="email"
           placeholder="Enter your email"
+          className="custom-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit" className="primary-button">Send Request</button>
+        <button type="submit" className="custom-button">Send Request</button>
       </form>
       {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}
-      <button onClick={() => navigate("/login")} className="back-button">
+      <button onClick={() => navigate("/login")} className="custom-button-back">
         Back
       </button>
     </div>

@@ -48,6 +48,7 @@ const Login = () => {
         <input
           type="email"
           placeholder="Your Email"
+          className="custom-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -55,11 +56,12 @@ const Login = () => {
         <input
           type="password"
           placeholder="Password"
+          className="custom-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="primary-button">Sign In</button>
+        <button type="submit" className="custom-button">Sign In</button>
       </form>
       <div className="separator">
         <span>OR</span>

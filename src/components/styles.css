@@ -18,46 +18,7 @@ body {
   box-sizing: border-box;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-form button {
-  background-color: #0056f5;
-}
-
-form button:hover {
-  background-color: #003bbf;
-}
-
-.container h2 {
-  color: #333333;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.container p {
-  color: #888888;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-form input {
+.custom-input {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -65,13 +26,42 @@ form input {
   border-radius: 8px;
   font-size: 16px;
   color: #555555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-form input:focus {
+.custom-input:focus {
   border-color: #0056f5;
   outline: none;
   box-shadow: 0 0 4px rgba(0, 86, 245, 0.4);
+}
+
+.custom-button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #0056f5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #003bbf;
+}
+
+.logout-button {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
 }
 
 .separator {
@@ -105,8 +95,9 @@ form input:focus {
   text-decoration: underline;
 }
 
-.back-button {
-  margin-top: 20px;
+.custom-button-back {
+  width: 100%;
+  margin-top: 10px;
   padding: 10px;
   background-color: #f4f6fc;
   border: 1px solid #ddd;
@@ -117,7 +108,7 @@ form input:focus {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.back-button:hover {
+.custom-button-back:hover {
   background-color: #ddd;
   color: #333;
 }
@@ -194,16 +185,6 @@ label {
   color: #666;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-}
-
 .button-row {
   display: flex;
   justify-content: center;
@@ -222,19 +203,6 @@ input {
 
 .edit-button:hover {
   background-color: #0040bf;
-}
-
-.logout-button {
-  background-color: #ff4d4f;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background-color: #d32f2f;
 }
 
 @media (max-width: 768px) {
@@ -274,7 +242,7 @@ input {
     width: 100%;
   }
 
-  input {
+  .custom-input {
     max-width: 300px;
     margin: 0 auto;
   }

@@ -66,25 +66,25 @@ const Profile = () => {
         <div className="form-row">
           <div className="form-group">
             <label>First Name</label>
-            <input type="text" value={userData.firstName} readOnly />
+            <input type="text" value={userData.firstName} className="custom-input" readOnly />
           </div>
           <div className="form-group">
             <label>Last Name</label>
-            <input type="text" value={userData.lastName} readOnly />
+            <input type="text" value={userData.lastName} className="custom-input" readOnly />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group">
             <label>Email</label>
-            <input type="email" value={userData.email} readOnly />
+            <input type="email" value={userData.email} className="custom-input" readOnly />
           </div>
         </div>
       </section>
       <div className="button-row">
-        <button className="edit-button" onClick={handleEditProfile}>
+        <button className="custom-button" onClick={handleEditProfile}>
           Edit Profile
         </button>
-        <button className="logout-button" onClick={handleLogout}>
+        <button className="custom-button logout-button" onClick={handleLogout}>
           Logout
         </button>
       </div>

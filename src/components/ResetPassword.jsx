@@ -64,35 +64,35 @@ const ResetPassword = () => {
         <input
           type="text"
           placeholder="Confirmation Code"
+          className="custom-input"
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="input-field"
           required
         />
         <input
           type="password"
           placeholder="New Password"
+          className="custom-input"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
-          className="input-field"
           required
         />
         <input
           type="password"
           placeholder="Confirm Password"
+          className="custom-input"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          className="input-field"
           required
         />
-        <button type="submit" className="primary-button">
+        <button type="submit" className="custom-button">
           Reset Password
         </button>
       </form>
       {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}
       <button
-        className="back-button"
+        className="custom-button-back"
         onClick={() => navigate("/login")}
       >
         Back

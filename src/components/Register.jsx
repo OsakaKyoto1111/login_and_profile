@@ -46,6 +46,7 @@ const Register = () => {
         <input
           type="email"
           placeholder="Email"
+          className="custom-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -53,6 +54,7 @@ const Register = () => {
         <input
           type="password"
           placeholder="Password"
+          className="custom-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -60,6 +62,7 @@ const Register = () => {
         <input
           type="text"
           placeholder="First Name"
+          className="custom-input"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
@@ -67,6 +70,7 @@ const Register = () => {
         <input
           type="text"
           placeholder="Last Name"
+          className="custom-input"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
@@ -74,10 +78,11 @@ const Register = () => {
         <input
           type="text"
           placeholder="Profile Picture URL"
+          className="custom-input"
           value={profilePictureUrl}
           onChange={(e) => setProfilePictureUrl(e.target.value)}
         />
-        <button type="submit" className="primary-button">Register</button>
+        <button type="submit" className="custom-button">Register</button>
       </form>
       {message && <p className="message">{message}</p>}
       <div className="separator">
@@ -88,7 +93,7 @@ const Register = () => {
           Already have an account? Login
         </a>
       </div>
-      <button className="back-button" onClick={() => navigate('/login')}>
+      <button className="custom-button-back" onClick={() => navigate('/login')}>
         Back
       </button>
     </div>

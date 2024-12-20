@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './styles.css'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 const UpdateProfile = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [profilePictureUrl, setProfilePictureUrl] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [profilePictureUrl, setProfilePictureUrl] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-  const userId = localStorage.getItem('userId');
-  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const UpdateProfile = () => {
         setEmail(email);
         setProfilePictureUrl(profilePictureUrl);
       } catch (err) {
-        setError('Failed to load profile data.');
+        setError("Failed to load profile data.");
       }
     };
 
@@ -40,8 +40,8 @@ const UpdateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('');
-    setError('');
+    setMessage("");
+    setError("");
 
     try {
       await axios.put(
@@ -57,10 +57,10 @@ const UpdateProfile = () => {
         }
       );
 
-      setMessage('Profile information updated successfully!');
-      setTimeout(() => navigate('/profile'), 1500);
+      setMessage("Profile information updated successfully!");
+      setTimeout(() => navigate("/profile"), 1500);
     } catch (err) {
-      setError('Error updating profile. Please try again.');
+      setError("Error updating profile. Please try again.");
     }
   };
 
@@ -71,6 +71,7 @@ const UpdateProfile = () => {
         <input
           type="text"
           placeholder="First Name"
+          className="custom-input"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
@@ -78,6 +79,7 @@ const UpdateProfile = () => {
         <input
           type="text"
           placeholder="Last Name"
+          className="custom-input"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
@@ -85,6 +87,7 @@ const UpdateProfile = () => {
         <input
           type="email"
           placeholder="Email"
+          className="custom-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -92,14 +95,15 @@ const UpdateProfile = () => {
         <input
           type="text"
           placeholder="Profile Picture URL"
+          className="custom-input"
           value={profilePictureUrl}
           onChange={(e) => setProfilePictureUrl(e.target.value)}
         />
-        <button type="submit" className="primary-button">Save Changes</button>
+        <button type="submit" className="custom-button">Save Changes</button>
       </form>
       {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}
-      <button className="back-button" onClick={() => navigate('/profile')}>
+      <button className="custom-button-back" onClick={() => navigate("/profile")}>
         Back
       </button>
     </div>
